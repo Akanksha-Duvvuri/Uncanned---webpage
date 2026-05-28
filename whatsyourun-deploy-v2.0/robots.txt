@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /brand_assets/
+
+# Keep mocks and QA out of indexing
+Disallow: /mock-
+Disallow: /qa-
+Disallow: /*.bak
+Disallow: /index.pre-
+
+Sitemap: https://uncanned.in/sitemap.xml

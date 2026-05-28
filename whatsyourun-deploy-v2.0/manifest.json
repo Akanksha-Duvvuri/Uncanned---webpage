@@ -1,0 +1,26 @@
+{
+  "name": "uncanned",
+  "short_name": "uncanned",
+  "description": "A functional prebiotic soda. Naturally uplifting, creatively refreshing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#26422B",
+  "background_color": "#26422B",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/brand_assets/Brand_Assets/01. Logo/PNG/Deep Green.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand_assets/Brand_Assets/01. Logo/PNG/Cream.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

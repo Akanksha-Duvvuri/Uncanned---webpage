@@ -1,0 +1,12 @@
+# Netlify / Cloudflare Pages redirects
+# Hide mocks and QA from the production host; serve 404 for direct hits.
+
+/mock-*          /404.html     404!
+/qa-*            /404.html     404!
+/*.bak           /404.html     404!
+/index.pre-*     /404.html     404!
+
+# Apex canonicalization (flip direction if www is your canonical)
+https://www.uncanned.in/*   https://uncanned.in/:splat   301!
+
+# SPA fallback is not needed — static multi-page site.

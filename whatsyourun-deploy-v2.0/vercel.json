@@ -1,0 +1,46 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/mock-(.*)", "destination": "/404.html", "statusCode": 404 },
+    { "source": "/qa-(.*)", "destination": "/404.html", "statusCode": 404 },
+    { "source": "/(.*)\\.bak", "destination": "/404.html", "statusCode": 404 }
+  ],
+  "headers": [
+    {
+      "source": "/brand_assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*\\.(?:html|htm))",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, must-revalidate" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ]
+}
