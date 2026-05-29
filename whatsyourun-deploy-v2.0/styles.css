@@ -76,11 +76,6 @@ body::before{
 /* ── CHAT ── */
 .hero-joke{text-align:center}
 .chat{display:flex;flex-direction:column;gap:9px;width:100%;max-width:340px;margin:0 auto}
-.bub{display:none;max-width:82%;padding:11px 16px;font-size:clamp(13.5px,1.6vw,16px);line-height:1.4;border-radius:19px;text-align:left}
-.bub.show{display:block;animation:bubPop .55s cubic-bezier(.34,1.56,.64,1) both}
-@keyframes bubPop{0%{opacity:0;transform:translateY(14px) scale(.7) rotate(-2deg)}55%{opacity:1;transform:translateY(-3px) scale(1.05) rotate(.5deg)}100%{opacity:1;transform:none}}
-.bub-uncanned{align-self:flex-start;color:var(--green);background:linear-gradient(160deg,rgba(255,237,187,.97),rgba(255,237,187,.84));border-bottom-left-radius:6px}
-.bub-you{align-self:flex-end;color:var(--cream);background:linear-gradient(160deg,#c46f3d,#a9572d);border-bottom-right-radius:6px}
 .typing{display:none;align-self:flex-start;padding:14px 16px;border-radius:19px;border-bottom-left-radius:6px;background:rgba(255,237,187,.92)}
 .typing.show{display:flex;gap:5px;align-items:center;animation:bubPop .35s cubic-bezier(.34,1.56,.64,1) both}
 .typing.typing-you{align-self:flex-end;background:rgba(196,111,61,.92);border-bottom-left-radius:19px;border-bottom-right-radius:6px}
@@ -195,34 +190,72 @@ body::before{
 }
 .d-star-br{bottom:22%;right:14%;width:clamp(18px,2.2vw,30px);opacity:.28;animation:heartbeat 4s ease-in-out infinite;animation-delay:1s}
 .d-bub-l{top:38%;left:13%;width:clamp(50px,6vw,80px);opacity:.4;animation:float-c 11s ease-in-out infinite}
-.doodle-skater{
-  position:absolute;
-
-  top:14%;
-  right:8%;
-
-  width:90px;
-
-  opacity:.14;
-
-  animation:skaterFloat 5s ease-in-out infinite;
-}
 
 @keyframes skaterFloat{
-  0%,100%{
-    transform:translateY(0px) rotate(-2deg);
+
+  0%{
+    transform:
+      translate(0px,0px)
+      rotate(-10deg);
   }
 
-  50%{
-    transform:translateY(-8px) rotate(2deg);
+  20%{
+    transform:
+      translate(18px,-8px)
+      rotate(-15deg);
+  }
+
+  40%{
+    transform:
+      translate(38px,-10px)
+      rotate(-6deg);
+  }
+
+  60%{
+    transform:
+      translate(90px,-32px)
+      rotate(-28deg);
+  }
+
+  80%{
+    transform:
+      translate(78px,-12px)
+      rotate(3deg);
+  }
+
+  100%{
+    transform:
+      translate(95px,0px)
+      rotate(-8deg);
   }
 }
-.d-wave-br{bottom:14%;left:18%;width:clamp(50px,6vw,80px);opacity:.5;animation:float-c 13s ease-in-out 4s infinite}
+.doodle-ramp {
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  width: 130px;       /* slightly larger so the ramp reads clearly */
+  opacity: .12;
+  z-index: 1;
+  pointer-events: none;
+  animation: rampFloat 4s ease-in-out infinite;
+}
+
+.doodle-skater {
+  position: absolute;
+  top: 24%;           /* raised up so the wheels land on the ramp surface */
+  right: 10%;         /* nudged left to sit over the flat lower section */
+  width: 72px;        /* a touch smaller so skater fits the ramp scale */
+  opacity: .16;
+  z-index: 2;
+  animation: skaterFloat 5s ease-in-out infinite;
+}
+
+.d-wave-br{bottom:20%;left:40%;width:clamp(50px,6vw,80px);opacity:.5;animation:float-c 13s ease-in-out 4s infinite}
 .doodle-cloud{
   position:absolute;
 
-  left:8%;
-  top:10%;
+  right:8%;
+  top:8%;
 
   width:120px;
 
@@ -248,8 +281,7 @@ body::before{
 @keyframes canBob2{0%,100%{transform:translate(var(--px),calc(var(--py) + 0px)) rotate(15deg)}40%{transform:translate(var(--px),calc(var(--py) + 14px)) rotate(18deg)}75%{transform:translate(var(--px),calc(var(--py) - 12px)) rotate(12deg)}}
 @keyframes canBob3{0%,100%{transform:translate(var(--px),calc(var(--py) + 0px)) rotate(22deg)}50%{transform:translate(var(--px),calc(var(--py) - 16px)) rotate(25deg)}}
 @keyframes canBob4{0%,100%{transform:translate(var(--px),calc(var(--py) + 0px)) rotate(-20deg)}45%{transform:translate(var(--px),calc(var(--py) - 10px)) rotate(-17deg)}80%{transform:translate(var(--px),calc(var(--py) + 6px)) rotate(-22deg)}}
-.can-1{top:18%;right:6%;width:clamp(46px,5.5vw,78px);opacity:0.5;animation:canBob1 7s ease-in-out infinite}
-.can-2{top:70%;left:4%;width:clamp(38px,4.5vw,64px);opacity:0.9;animation:canBob2 9s ease-in-out 1.5s infinite}
+.can-1{bottom:20%;left: 6%;width:clamp(46px,5.5vw,78px);opacity:0.5;animation:canBob1 7s ease-in-out infinite}
 
 /* ── FIZZ BUBBLES ── */
 .fizz-bubbles{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
@@ -404,21 +436,6 @@ body::before{
   animation:float-c 12s ease-in-out infinite;
 }
 
-#riderCycling{
-  opacity:1;
-}
-
-#riderPushing{
-  opacity:0;
-}
-
-.rider.pushing #riderCycling{
-  opacity:0;
-}
-
-.rider.pushing #riderPushing{
-  opacity:1;
-}
 /* ── WAVY HOVER ── */
 .wavy-hover{position:relative;text-decoration:none!important}
 .wavy-hover::after{content:'';position:absolute;left:-4%;right:-4%;bottom:-.35em;height:.5em;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 12' preserveAspectRatio='none'><path d='M2 7 C 22 1, 42 11, 62 6 S 102 1, 122 7 S 162 11, 182 6 S 218 3, 218 7' stroke='%23BD6537' stroke-width='2.5' fill='none' stroke-linecap='round'/></svg>");background-size:100% 100%;background-repeat:no-repeat;transform:scaleX(0);transform-origin:left center;transition:transform .5s cubic-bezier(.2,.9,.25,1.05);pointer-events:none}
